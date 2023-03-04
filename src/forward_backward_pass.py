@@ -5,6 +5,8 @@ from torchmetrics import WordErrorRate, CharErrorRate
 from torch.utils.data import DataLoader
 #from decoder import decoder: a function that decodes the predictions
 
+__author__ = "Diep Luong"
+
 def decoder(predictions, labels, label_lengths):
     return None # comment out when the decoder file has been written
 

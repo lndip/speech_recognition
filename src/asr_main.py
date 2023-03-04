@@ -3,6 +3,8 @@ from asr_train_test import asr_train, asr_test
 
 import torch
 
+__author__ = "Diep Luong"
+
 def main():
     # Check on device
     device = 'cuda' if torch.cuda.is_available() else 'cpu'

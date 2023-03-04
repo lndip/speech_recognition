@@ -2,6 +2,8 @@ import torch
 from torch.nn import Module, Conv2d, GRU, Dropout, BatchNorm2d, ReLU, Sequential, Linear
 from pytorch_model_summary import summary 
 
+__author__ = "Diep Luong"
+
 class ResidualCNNBlock(Module):
     def __init__(self, 
                 in_channels:int, 

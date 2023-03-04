@@ -6,6 +6,8 @@ from pathlib import Path
 from torch.optim import Adam
 from torch.utils.data import DataLoader
 
+__author__ = "Diep Luong"
+
 def asr_train(n_features:int,
               epochs:int,
               device:str,
