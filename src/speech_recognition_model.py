@@ -146,14 +146,14 @@ class SpeechRecognitionModel(Module):
         print(shape)
         X = X.view(-1, shape[1]*shape[2], shape[3]).transpose(1,2) # (batch, time, features)
         X = self.fc(X) # (batch, time, rnn_dim)
-        X = self.bigru_blocks(X)
-        pred = self.classifier(X)
+        X = self.bigru_blocks(X)  # (batch, time, rnn_dim*2)
+        pred = self.classifier(X) # (batch, time, n_classes)
 
         return pred
 
 
 def main():
-    model = SpeechRecognitionModel(128, 28, 800)
+    model = SpeechRecognitionModel(128, 29, 800)
     print(summary(model, torch.rand(4, 1, 800, 124)))
 
 
