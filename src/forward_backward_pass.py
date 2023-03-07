@@ -3,12 +3,9 @@ import numpy as np
 from torch.nn import CTCLoss, Module
 from torchmetrics import WordErrorRate, CharErrorRate
 from torch.utils.data import DataLoader
-#from decoder import decoder: a function that decodes the predictions
+from decoder import GreedyDecoder
 
 __author__ = "Diep Luong"
-
-def decoder(predictions, labels, label_lengths):
-    return None # comment out when the decoder file has been written
 
 def forward_backward_pass(dataloader:DataLoader,
                           asr_model:Module,
@@ -65,7 +62,7 @@ def forward_backward_pass(dataloader:DataLoader,
 
         # Evaluate by using word error rate and char error rate
         # The decoder return sequences of text in form ["text1", "text2",...]
-        decoded_preds, decoded_labels = decoder(predictions, labels, label_lengths)
+        decoded_preds, decoded_labels = GreedyDecoder(predictions, labels, label_lengths)
         pred_wer = wer(decoded_preds, decoded_labels)
         pred_cer = cer(decoded_preds, decoded_labels)
 

@@ -61,7 +61,8 @@ class ResidualCNNBlock(Module):
 class GRUBlock(Module):
     def __init__(self, 
                 in_features:int,
-                hidden_size:int) -> None:
+                hidden_size:int,
+                dropout:float) -> None:
         """Bidirectional GRU block for ASR system
 
         :param in_features: number of input features 
@@ -76,10 +77,12 @@ class GRUBlock(Module):
                         batch_first=True,
                         bidirectional=True)
         self.relu = ReLU()
+        self.dropout = Dropout(dropout)
 
     def forward(self,X):
         X = self.relu(X)
         X, _ = self.bigru(X)
+        X = self.dropout(X)
         return X
 
 
@@ -150,8 +153,8 @@ class SpeechRecognitionModel(Module):
 
 
 def main():
-    model = SpeechRecognitionModel(128, 28, 512)
-    print(summary(model, torch.rand(4, 1, 512, 124)))
+    model = SpeechRecognitionModel(128, 28, 800)
+    print(summary(model, torch.rand(4, 1, 800, 124)))
 
 
 if __name__ == "__main__":

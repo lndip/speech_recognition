@@ -12,11 +12,11 @@ def main():
 
     # Training paraneters
     epochs = 200
-    n_features = None
+    n_features = None # the spectrogram will have the shape of (features x n_frames), n_features = features
 
     # Get dataloader
     train_dataloader = None
-    test_dataloader = None
+    test_dataloader = None # for test_dataloader, batch_size = len(test_dataset)
 
     asr_train(n_features, epochs, device, train_dataloader)
 
