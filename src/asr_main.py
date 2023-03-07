@@ -1,26 +1,48 @@
 from asr_train_test import asr_train, asr_test
-# from getting_and_init_the_data import get_dataloder
-
+from data_loader import data_preprocessing
+from torch.utils.data import DataLoader
+import torch.utils.data as data
+import torchaudio
+import os
+import torch.utils.data as data_utils
 import torch
+from data_loader import load_data
 
 __author__ = "Diep Luong"
 
+
 def main():
     # Check on device
+    use_cuda = torch.cuda.is_available()
+    torch.manual_seed(7)
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f'Process on {device}', end='\n\n')
 
+    train_dataset = load_data("./train-clean-100")
+    test_dataset = load_data("./test-clean")
+    
+
     # Training paraneters
     epochs = 200
-    n_features = None # the spectrogram will have the shape of (features x n_frames), n_features = features
+    n_features = 128
 
-    # Get dataloader
-    train_dataloader = None
-    test_dataloader = None # for test_dataloader, batch_size = len(test_dataset)
 
-    asr_train(n_features, epochs, device, train_dataloader)
+    # Get dataloader 
+    train_loader = data.DataLoader(
+        dataset = train_dataset,
+        batch_size=20,
+        shuffle=True,
+        collate_fn=lambda x: data_preprocessing(x, 'train')
+    )
+    test_loader = data.DataLoader(
+        dataset=test_dataset,
+        batch_size=20,
+        shuffle=False,
+        collate_fn=lambda x: data_preprocessing(x, 'test')
+    )
+    asr_train(n_features, epochs, device, train_loader)
 
-    asr_test(n_features, device, test_dataloader)
+    asr_test(n_features, device, test_loader)
 
 
 if __name__ == "__main__":
