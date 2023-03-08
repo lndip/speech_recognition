@@ -7,6 +7,8 @@ import os
 import torch.utils.data as data_utils
 import torch
 from data_loader import load_data
+from pathlib import Path
+from torch.utils.data import random_split
 
 __author__ = "Diep Luong"
 
@@ -17,14 +19,16 @@ def main():
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f'Process on {device}', end='\n\n')
 
-    train_dataset = load_data("./train-clean-100")
-    test_dataset = load_data("./test-clean")
-    
+    train_dataset = torchaudio.datasets.LIBRISPEECH(Path('speech_recognition', 'data', 'train'), url='train-clean-100', download=True)
+    test_dataset = torchaudio.datasets.LIBRISPEECH(Path('speech_recognition', 'data', 'test'), url="test-clean", download=True)
+    train_size = int(len(train_dataset)*0.4)
+    test_size = int(len(test_dataset)*0.4)
+    [train_dataset, _] = random_split(train_dataset, [train_size, len(train_dataset)-train_size])
+    [test_dataset, _] = random_split(test_dataset, [test_size, len(test_dataset)-test_size])
 
     # Training paraneters
-    epochs = 200
+    epochs = 2
     n_features = 128
-
 
     # Get dataloader 
     train_loader = data.DataLoader(

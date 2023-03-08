@@ -70,7 +70,7 @@ class TextTransform:
         int_sequence = []
         for c in text:
             if c == ' ':
-                ch = self.char_map['']
+                ch = self.char_map['<SPACE>']
             else:
                 ch = self.char_map[c]
             int_sequence.append(ch)

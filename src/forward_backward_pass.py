@@ -48,7 +48,7 @@ def forward_backward_pass(dataloader:DataLoader,
         labels = labels.to(device)
 
         predictions = asr_model(spectrograms) # (batch, time, n_classes)
-        predictions = torch.nn.functional.log_softmax(predictions)
+        predictions = torch.nn.functional.log_softmax(predictions, dim=-1)
 
         loss = loss_function(predictions.transpose(0,1), labels, input_lengths, label_lengths) # transpose to match the required dimension of CTC
         

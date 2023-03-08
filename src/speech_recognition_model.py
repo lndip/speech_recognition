@@ -143,7 +143,7 @@ class SpeechRecognitionModel(Module):
         X = self.cnn(X)
         X = self.rescnn_blocks(X)
         shape = X.size()
-        print(shape)
+        # print(shape)
         X = X.view(-1, shape[1]*shape[2], shape[3]).transpose(1,2) # (batch, time, features)
         X = self.fc(X) # (batch, time, rnn_dim)
         X = self.bigru_blocks(X)  # (batch, time, rnn_dim*2)
