@@ -21,13 +21,13 @@ def main():
 
     train_dataset = torchaudio.datasets.LIBRISPEECH(Path('speech_recognition', 'data', 'train'), url='train-clean-100', download=True)
     test_dataset = torchaudio.datasets.LIBRISPEECH(Path('speech_recognition', 'data', 'test'), url="test-clean", download=True)
-    train_size = int(len(train_dataset)*0.4)
-    test_size = int(len(test_dataset)*0.4)
+    train_size = int(len(train_dataset)*0.2)
+    test_size = int(len(test_dataset)*0.2)
     [train_dataset, _] = random_split(train_dataset, [train_size, len(train_dataset)-train_size])
     [test_dataset, _] = random_split(test_dataset, [test_size, len(test_dataset)-test_size])
 
     # Training paraneters
-    epochs = 2
+    epochs = 100
     n_features = 128
 
     # Get dataloader 
