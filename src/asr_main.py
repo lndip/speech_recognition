@@ -19,15 +19,15 @@ def main():
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f'Process on {device}', end='\n\n')
 
-    train_dataset = torchaudio.datasets.LIBRISPEECH(Path('speech_recognition', 'data', 'train'), url='train-clean-100', download=True)
-    test_dataset = torchaudio.datasets.LIBRISPEECH(Path('speech_recognition', 'data', 'test'), url="test-clean", download=True)
-    train_size = int(len(train_dataset)*0.2)
-    test_size = int(len(test_dataset)*0.2)
+    train_dataset = torchaudio.datasets.LIBRISPEECH(Path('data', 'train'), url='train-clean-100', download=True)
+    test_dataset = torchaudio.datasets.LIBRISPEECH(Path('data', 'test'), url="test-clean", download=True)
+    train_size = int(len(train_dataset)*0.05)
+    test_size = int(len(test_dataset)*0.05)
     [train_dataset, _] = random_split(train_dataset, [train_size, len(train_dataset)-train_size])
     [test_dataset, _] = random_split(test_dataset, [test_size, len(test_dataset)-test_size])
 
     # Training paraneters
-    epochs = 100
+    epochs = 10
     n_features = 128
 
     # Get dataloader 

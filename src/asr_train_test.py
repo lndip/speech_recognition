@@ -25,7 +25,7 @@ def asr_train(n_features:int,
     """
     asr_model = SpeechRecognitionModel(rnn_dim=512,
                                        n_classes=29, # 29 classes including the blank
-                                       n_cnn_features=n_features)
+                                       n_cnn_features=n_features).to(device)
 
     optimizer = Adam(params=asr_model.parameters(), lr=1e-3)
 
@@ -46,7 +46,7 @@ def asr_test(n_features:int,
              dataloader:DataLoader):
     asr_model = SpeechRecognitionModel(rnn_dim=128,
                                     n_classes=29,
-                                    n_cnn_features=n_features)
+                                    n_cnn_features=n_features).to(device)
 
     asr_model.load_state_dict(torch.load(Path('speech_recognition', 'src', 'asr_state_dict.pt'), map_location=device))
 
