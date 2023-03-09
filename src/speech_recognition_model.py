@@ -153,8 +153,8 @@ class SpeechRecognitionModel(Module):
 
 
 def main():
-    model = SpeechRecognitionModel(128, 29, 800)
-    print(summary(model, torch.rand(4, 1, 800, 124)))
+    model = SpeechRecognitionModel(128, 29, 64)
+    print(summary(model, torch.rand(4, 1, 64, 124)))
 
 
 if __name__ == "__main__":

@@ -28,7 +28,7 @@ def main():
 
     # Training paraneters
     epochs = 10
-    n_features = 128
+    n_features = 64
 
     # Get dataloader 
     train_loader = data.DataLoader(

@@ -1,3 +1,0 @@
-/var/spool/slurmd/job23986648/slurm_script: line 43: conda: command not found
-/home/vgdilu/.conda/envs/privacy_preservation/lib/python3.9/site-packages/torchaudio/functional/functional.py:539: UserWarning: At least one mel filterbank has all zero values. The value for `n_mels` (128) may be set too high. Or, the value for `n_freqs` (201) may be set too low.
-  warnings.warn(
