@@ -38,7 +38,7 @@ def asr_train(n_features:int,
         print(f'Epoch: {epoch:03d} | '
               f'Mean loss:{train_loss:7.4f}')
 
-    torch.save(asr_model.state_dict(), Path('speech_recognition', 'src', 'asr_state_dict.pt'))
+    torch.save(asr_model.state_dict(), Path('src', 'asr_state_dict.pt'))
 
 
 def asr_test(n_features:int,
@@ -48,7 +48,7 @@ def asr_test(n_features:int,
                                     n_classes=29,
                                     n_cnn_features=n_features).to(device)
 
-    asr_model.load_state_dict(torch.load(Path('speech_recognition', 'src', 'asr_state_dict.pt'), map_location=device))
+    asr_model.load_state_dict(torch.load(Path('src', 'asr_state_dict.pt'), map_location=device))
 
     asr_model, test_loss, pred_wer, pred_cer = forward_backward_pass(dataloader,
                                             asr_model=asr_model,

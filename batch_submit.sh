@@ -19,7 +19,7 @@
 #SBATCH -c 8
 
 # time allocated for the job
-#SBATCH -t 1-00:00:00
+#SBATCH -t 2-00:00:00
 
 #number of gpus
 #SBATCH --gres=gpu:1
