@@ -45,7 +45,7 @@ def main():
     )
 
     # Training and testing
-    asr_train(n_features, epochs, device, train_loader)
+    # asr_train(n_features, epochs, device, train_loader)
 
     asr_test(n_features, device, test_loader)
 

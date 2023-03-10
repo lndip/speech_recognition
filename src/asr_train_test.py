@@ -44,7 +44,7 @@ def asr_train(n_features:int,
 def asr_test(n_features:int,
              device:str,
              dataloader:DataLoader):
-    asr_model = SpeechRecognitionModel(rnn_dim=128,
+    asr_model = SpeechRecognitionModel(rnn_dim=512,
                                     n_classes=29,
                                     n_cnn_features=n_features).to(device)
 
