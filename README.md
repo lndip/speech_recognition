@@ -6,10 +6,10 @@ This project employs CRNN structure with convolutional and GRU blocks to process
 ![image](https://github.com/lndip/speech_recognition/assets/65665546/20cdbf3b-9b81-4d59-89ba-cf268b40cd5a)
 
 # Installation
-To run the code, you need 'python', 'pytorch', and 'numpy'
+To run the code, you need `python`, `pytorch`, and `numpy`
 
 # How to run
-'asr_main.py' incorperates the training loop and the testing stage of the speech transcription model
+`asr_main.py` incorperates the training loop and the testing stage of the speech transcription model
 
 # Authors
 Diep Luong
