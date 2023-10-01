@@ -13,5 +13,6 @@ To run the code, you need `python`, `pytorch`, and `numpy`
 
 # Authors
 Diep Luong
+Fareeda Mohammad
 
 
