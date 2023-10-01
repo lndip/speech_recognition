@@ -12,7 +12,8 @@ To run the code, you need `python`, `pytorch`, and `numpy`
 `asr_main.py` incorperates the training loop and the testing stage of the speech transcription model
 
 # Authors
-Diep Luong
-Fareeda Mohammad
+<ul>
+  <li>Diep Luong
+  <li>Fareeda Mohammad
 
 
